@@ -1,6 +1,7 @@
 import dbConnect from "@/lib/dbConnect"
 import UserModel from "@/model/User"
 import bcrypt from "bcryptjs"
+import {NextResponse} from "next/server"
 
 
 export async function POST(request: Request){
@@ -9,24 +10,24 @@ export async function POST(request: Request){
     try {
         const {name, email, password, organization, role} = await request.json()
 
-         // 1. Validate role
+         // Validate role
         if (!["candidate", "company"].includes(role)) {
-        return Response.json(
+        return NextResponse.json(
             { success: false, message: "Invalid role" },
             { status: 400 }
         );
         }
 
-        // 2. Validate required fields
+        // Validate required fields
         if (!name || !email || !password) {
-        return Response.json(
+        return NextResponse.json(
             { success: false, message: "Missing required fields" },
             { status: 400 }
         );
         }
 
         if (role === "company" && !organization) {
-        return Response.json(
+        return NextResponse.json(
             { success: false, message: "Organization is required for companies" },
             { status: 400 }
         );
@@ -35,7 +36,7 @@ export async function POST(request: Request){
         
         const existingUser = await UserModel.findOne({ email, role });
         if (existingUser) {
-        return Response.json(
+        return NextResponse.json(
             { success: false, message: "User already exists" },
             { status: 400 }
         );
@@ -53,14 +54,14 @@ export async function POST(request: Request){
         })
 
         await newUser.save();
-        return Response.json(
+        return NextResponse.json(
             { success: true, message: "User registered successfully" },
             { status: 201 }
         );
         
     } catch (error) {
         console.error("Error in registering user")
-        return Response.json(
+        return NextResponse.json(
             {success: false, message: "Error in registering user"},
             {status: 500}
         )
