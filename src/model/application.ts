@@ -1,65 +1,48 @@
-import mongoose, {Schema, Document} from "mongoose";
+import mongoose, { Schema, Document } from "mongoose";
 
-export interface Application extends Document{
-    jobId: mongoose.Schema.Types.ObjectId;
-    userId: mongoose.Schema.Types.ObjectId;
-    githubLink: string;
-    linkedinLink: string;
-    resumeLink: string;
-    coverLetter: string;
-    projectExplanation: string;
-    techStack: string[];
-    status: string;
-    appliedAt: Date;
-    updatedAt: Date;
+export interface Application extends Document {
+  jobId: mongoose.Types.ObjectId;
+  userId: mongoose.Types.ObjectId;
+  githubLink: string;
+  linkedinLink: string;
+  resumeLink: string;
+  coverLetter?: string;
+  projectExplanation: string;
+  techStack: string[];
+  status: "applied" | "under_review" | "interview" | "accepted" | "rejected";
+  createdAt: Date;
+  updatedAt: Date;
 }
 
-const ApplicationSchema: Schema<Application> = new Schema({
+const ApplicationSchema = new Schema<Application>(
+  {
     jobId: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Job",
-        required: [true, "Job ID is required"],
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Job",
+      required: true,
     },
     userId: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "User",
-        required: [true, "User ID is required"],
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
     },
-    githubLink: {
-        type: String,
-        required: [true, "Github link is required"],
-    },
-    linkedinLink: {
-        type: String,
-        required: [true, "Linkedin link is required"],
-    },
-    resumeLink: {
-        type: String,
-        required: [true, "Resume link is required"],
-    },
-    coverLetter: {
-        type: String,
-    },
-    projectExplanation: {
-        type: String,
-        required: [true, "Project explanation is required"],
-    },
-    techStack: {
-        type: [String],
-        required: [true, "Tech stack is required"],
-    },
+    githubLink: { type: String, required: true },
+    linkedinLink: { type: String, required: true },
+    resumeLink: { type: String, required: true },
+    coverLetter: { type: String },
+    projectExplanation: { type: String, required: true },
+    techStack: { type: [String], required: true },
     status: {
-        type: String,
-        enum: ["applied", "under_review", "interview" ,"accepted", "rejected"],
-        default: "applied",
+      type: String,
+      enum: ["applied", "under_review", "interview", "accepted", "rejected"],
+      default: "applied",
     },
-    appliedAt: {
-        type: Date,
-        default: Date.now,
-    },
-    updatedAt: {
-        type: Date,
-        default: Date.now,
-    },
-})
-    
+  },
+  { timestamps: true }
+);
+
+const ApplicationModel =
+  (mongoose.models.Application as mongoose.Model<Application>) ||
+  mongoose.model<Application>("Application", ApplicationSchema);
+
+export default ApplicationModel;

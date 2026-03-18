@@ -1,23 +1,26 @@
 import dbConnect from "@/lib/dbConnect"
 import UserModel from "@/model/User"
 import { NextResponse } from "next/server"
-import bcrypt from "bcryptjs"
+import { logInSchema } from "@/schemas/logInSchema"
 
 
 export async function POST(request: Request){
     await dbConnect()
 
     try {
-        const {email, password} = await request.json();
 
-        if(!email || !password){
+        const result = logInSchema.safeParse(await request.json())
+
+        if(!result.success){
             return NextResponse.json({
                 success: false,
-                message: "Missing required fields"
+                message: "Invalid request"
             },{
                 status: 400
             })
         }
+
+        const {email, password} = result.data
 
         const user = await UserModel.findOne({email})
 

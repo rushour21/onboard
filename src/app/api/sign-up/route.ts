@@ -2,36 +2,26 @@ import dbConnect from "@/lib/dbConnect"
 import UserModel from "@/model/User"
 import bcrypt from "bcryptjs"
 import {NextResponse} from "next/server"
+import { signUpSchema } from "@/schemas/signUpSchema"
 
 
 export async function POST(request: Request){
     await dbConnect()
 
     try {
-        const {name, email, password, organization, role} = await request.json()
 
-         // Validate role
-        if (!["candidate", "company"].includes(role)) {
-        return NextResponse.json(
-            { success: false, message: "Invalid role" },
-            { status: 400 }
-        );
-        }
+        const result = signUpSchema.safeParse(await request.json())
 
-        // Validate required fields
-        if (!name || !email || !password) {
-        return NextResponse.json(
-            { success: false, message: "Missing required fields" },
-            { status: 400 }
-        );
+        if(!result.success){
+            return NextResponse.json({
+                success: false,
+                message: "Invalid request"
+            },{
+                status: 400
+            })
         }
-
-        if (role === "company" && !organization) {
-        return NextResponse.json(
-            { success: false, message: "Organization is required for companies" },
-            { status: 400 }
-        );
-        }
+        
+        const {name, email, password, organization, role} = result.data
 
         
         const existingUser = await UserModel.findOne({ email, role });
