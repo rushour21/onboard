@@ -62,21 +62,31 @@ export default function HeroSection() {
           </p>
 
           {/* CTAs */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 flex-wrap">
             <Link
               href="/sign-up"
-              className="group flex items-center gap-2 bg-[#2D3436] text-white font-bold text-base px-8 py-4 rounded-2xl shadow-lg hover:shadow-xl hover:bg-[#2D3436]/90 transition-all duration-200"
+              className="group flex items-center justify-center gap-2 bg-[#2D3436] text-white font-bold text-base px-8 py-4 rounded-2xl shadow-lg hover:shadow-xl hover:bg-[#2D3436]/90 transition-all duration-200 w-full sm:w-auto"
             >
               Start as a Candidate
               <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Link>
             <Link
               href="/sign-up?role=company"
-              className="flex items-center gap-2 bg-white text-[#2D3436] font-bold text-base px-8 py-4 rounded-2xl border border-[#E2E8F0] shadow-sm hover:shadow-md hover:border-[#B2CEC7] transition-all duration-200"
+              className="flex items-center justify-center gap-2 bg-white text-[#2D3436] font-bold text-base px-8 py-4 rounded-2xl border border-[#E2E8F0] shadow-sm hover:shadow-md hover:border-[#B2CEC7] transition-all duration-200 w-full sm:w-auto"
             >
               Post a Job
               <span className="text-xs font-medium bg-[#D6D1F5] text-[#2D3436] px-2 py-0.5 rounded-full">
                 Free
+              </span>
+            </Link>
+            <Link
+              href="/ats-score"
+              className="flex items-center justify-center gap-2 bg-[#B2CEC7]/20 text-[#2D3436] font-bold text-base px-8 py-4 rounded-2xl border border-[#B2CEC7]/50 shadow-sm hover:bg-[#B2CEC7]/40 hover:shadow-md transition-all duration-200 w-full sm:w-auto mt-2 sm:mt-0"
+            >
+              Check ATS Score
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#2D3436] opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-[#2D3436]"></span>
               </span>
             </Link>
           </div>

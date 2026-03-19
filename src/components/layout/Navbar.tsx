@@ -54,6 +54,12 @@ export default function Navbar() {
             >
               Testimonials
             </Link>
+            <Link
+              href="/ats-score"
+              className="group relative text-sm font-bold text-[#2D3436] transition-colors flex items-center gap-1"
+            >
+              ATS Score <span className="flex items-center justify-center w-4 h-4 rounded-full bg-[#B2CEC7]/30 text-[9px] text-[#2D3436] group-hover:bg-[#B2CEC7] transition-colors">✨</span>
+            </Link>
           </nav>
 
           {/* Desktop CTA */}
@@ -89,6 +95,9 @@ export default function Navbar() {
           <Link href="#features" className="text-sm font-medium text-[#2D3436]/80 hover:text-[#2D3436]" onClick={() => setMenuOpen(false)}>Features</Link>
           <Link href="#how-it-works" className="text-sm font-medium text-[#2D3436]/80 hover:text-[#2D3436]" onClick={() => setMenuOpen(false)}>How It Works</Link>
           <Link href="#testimonials" className="text-sm font-medium text-[#2D3436]/80 hover:text-[#2D3436]" onClick={() => setMenuOpen(false)}>Testimonials</Link>
+          <Link href="/ats-score" className="text-sm font-bold text-[#2D3436] hover:text-[#2D3436] flex items-center justify-between" onClick={() => setMenuOpen(false)}>
+            ATS Score <span className="text-[10px] bg-[#B2CEC7] px-2 py-0.5 rounded-full">NEW</span>
+          </Link>
           <hr className="border-[#E2E8F0]" />
           <Link href="/log-in" className="text-sm font-semibold text-center text-[#2D3436] py-2.5 border border-[#E2E8F0] rounded-xl" onClick={() => setMenuOpen(false)}>Log In</Link>
           <Link href="/sign-up" className="text-sm font-bold text-center bg-[#2D3436] text-white py-2.5 rounded-xl" onClick={() => setMenuOpen(false)}>Get Started</Link>
