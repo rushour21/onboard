@@ -24,7 +24,11 @@ export async function POST(request: Request){
 
         const user = await UserModel.findOne({email})
 
+        console.log("Login attempt for:", email)
+        console.log("User found:", !!user)
+
         if(!user){
+            console.log("User not found with email:", email)
             return NextResponse.json({
                 success: false,
                 message: "User not found"
@@ -34,6 +38,8 @@ export async function POST(request: Request){
         }
 
         const isPasswordValid = await user.validatePassword(password)
+
+        console.log("Password valid:", isPasswordValid)
 
         if(!isPasswordValid){
             return NextResponse.json({
@@ -49,7 +55,8 @@ export async function POST(request: Request){
         const response = NextResponse.json({
             success: true,
             message: "User logged in successfully",
-            token
+            token,
+            role: user.role
         },{
             status: 200
         })

@@ -10,7 +10,7 @@ export async function GET(request: NextRequest){
     try {
         const jobs = await JobModel.find({
             status: "open"
-        }).select("title organization location, postedBy jobType salary")
+        }).select("title organization location postedBy jobType salary")
 
         return NextResponse.json({
             success: true,
@@ -34,12 +34,20 @@ export async function POST(request: NextRequest){
     await dbConnect()
 
     try {
+        const user = await getUserFromRequest(request)
+        if (user.role !== "company") {
+          return NextResponse.json(
+            { success: false, message: "Only companies can create jobs" },
+            { status: 403 }
+          )
+        }
+
         const result = addJobSchema.safeParse(await request.json())
 
         if(!result.success){
             return NextResponse.json({
                 success: false,
-                message: "Invalid request"
+                message: result.error.issues[0]?.message || "Invalid request"
             },{
                 status: 400
             })
@@ -57,9 +65,10 @@ export async function POST(request: NextRequest){
             jobType,
             experience,
             skills,
-            organization,
+            organization: organization || user.organization || user.name,
             assessmentDescription,
-            assessmentDueDate
+            assessmentDueDate,
+            postedBy: user._id
         })
 
         await newJob.save()
@@ -86,9 +95,17 @@ export async function DELETE(request: NextRequest){
     await dbConnect()
 
     try {
+        const user = await getUserFromRequest(request)
+        if (user.role !== "company") {
+          return NextResponse.json(
+            { success: false, message: "Only companies can delete jobs" },
+            { status: 403 }
+          )
+        }
+
         const {jobId} = await request.json()
 
-        const job = await JobModel.findByIdAndDelete(jobId)
+        const job = await JobModel.findOneAndDelete({ _id: jobId, postedBy: user._id })
 
         if(!job){
             return NextResponse.json({

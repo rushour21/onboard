@@ -44,10 +44,21 @@ export async function POST(request: Request){
         })
 
         await newUser.save();
-        return NextResponse.json(
-            { success: true, message: "User registered successfully" },
-            { status: 201 }
-        );
+        const token = newUser.generateToken()
+
+        const response = NextResponse.json(
+          { success: true, message: "User registered successfully", role: newUser.role, token },
+          { status: 201 }
+        )
+
+        response.cookies.set("token", token, {
+          httpOnly: true,
+          secure: true,
+          sameSite: "strict",
+          maxAge: 60 * 60 * 24 * 7
+        })
+
+        return response
         
     } catch (error) {
         console.error("Error in registering user")

@@ -20,7 +20,7 @@ export async function GET(request: NextRequest){
 
         const applications = await ApplicationModel.find({
             userId: user._id
-        })
+        }).populate("jobId", "title organization location")
 
         return NextResponse.json({
             success: true,

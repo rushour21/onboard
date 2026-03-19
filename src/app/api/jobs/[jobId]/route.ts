@@ -7,12 +7,12 @@ import { getUserFromRequest } from "@/utils/authHelper"
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { jobId: string } }
+  context: { params: Promise<{ jobId: string }> }
 ) {
   await dbConnect()
 
   try {
-    const { jobId } = params
+    const { jobId } = await context.params
 
     let userId: string | null = null
 
@@ -71,7 +71,10 @@ export async function GET(
   }
 }
 
-export async function UPDATE(request: NextRequest, { params }: { params: { jobId: string } }){ 
+export async function PUT(
+  request: NextRequest,
+  context: { params: Promise<{ jobId: string }> }
+){ 
     await dbConnect()
 
     try {
@@ -86,7 +89,7 @@ export async function UPDATE(request: NextRequest, { params }: { params: { jobId
                 status: 403
             })
         }
-        const {jobId} = params
+        const {jobId} = await context.params
         const { title, description, requirements, responsibilities, location, salary, jobType, experience, skills, organization, assessmentDescription, assessmentDueDate} = await request.json()
 
         const job = await JobModel.findByIdAndUpdate(jobId, {
@@ -131,11 +134,14 @@ export async function UPDATE(request: NextRequest, { params }: { params: { jobId
     }
 }
     
-export async function DELETE(request: NextRequest, { params }: { params: { jobId: string } }){
+export async function DELETE(
+  request: NextRequest,
+  context: { params: Promise<{ jobId: string }> }
+){
     await dbConnect()
 
     try {
-        const {jobId} = params
+        const {jobId} = await context.params
         const user = await getUserFromRequest(request)
 
         if(user.role !== "company"){

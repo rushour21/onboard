@@ -3,12 +3,12 @@ import ApplicationModel from "@/model/application";
 import { getUserFromRequest } from "@/utils/authHelper";
 import { NextRequest, NextResponse } from "next/server";
 
-export async function PATCH(request: NextRequest, { params }: { params: { status: string } }){
+export async function PATCH(request: NextRequest){
     await dbConnect()
 
     try {
         const user = await getUserFromRequest(request)
-        const status = params.status
+        const { applicationId, status } = await request.json()
 
         if(user.role !== "company"){
             return NextResponse.json({
@@ -26,8 +26,6 @@ export async function PATCH(request: NextRequest, { params }: { params: { status
                 status: 400
             })
         }
-
-        const {applicationId} = await request.json()
 
         const application = await ApplicationModel.findByIdAndUpdate(applicationId, {
             status

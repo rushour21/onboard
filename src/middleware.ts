@@ -3,34 +3,13 @@ import { NextRequest } from "next/server"
 import { verifyToken } from "./lib/jwt"
 
 export function middleware(request: NextRequest) {
-  try {
-    const token = request.cookies.get("token")?.value
-
-    if (!token) {
-      return NextResponse.redirect(new URL("/login", request.url))
-    }
-
-    const decoded = verifyToken(token)
-
-    const path = request.nextUrl.pathname
-
-    // company routes protection
-    if (path.startsWith("/dashboard/company") && decoded.role !== "company") {
-      return NextResponse.redirect(new URL("/unauthorized", request.url))
-    }
-
-    // candidate routes protection
-    if (path.startsWith("/dashboard/candidate") && decoded.role !== "candidate") {
-      return NextResponse.redirect(new URL("/unauthorized", request.url))
-    }
-
-    return NextResponse.next()
-
-  } catch {
-    return NextResponse.redirect(new URL("/login", request.url))
-  }
+  // Middleware route protection/redirects intentionally disabled.
+  // Login-based redirects are handled client-side after successful auth.
+  void request
+  return NextResponse.next()
 }
 
 export const config = {
-  matcher: ["/dashboard/:path*"]
+  // Empty matcher disables middleware for all routes.
+  matcher: []
 }

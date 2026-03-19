@@ -12,6 +12,6 @@ export const addJobSchema = z.object({
     skills: z.array(z.string()),
     organization: z.string(),
     assessmentDescription: z.string(),
-    assessmentDueDate: z.date(),
+    assessmentDueDate: z.coerce.date(),
 })
     

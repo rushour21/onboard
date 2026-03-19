@@ -1,5 +1,6 @@
 import dbConnect from "@/lib/dbConnect";
 import ApplicationModel from "@/model/application";
+import JobModel from "@/model/job";
 import { getUserFromRequest } from "@/utils/authHelper";
 import { NextRequest, NextResponse } from "next/server";
 
@@ -18,9 +19,13 @@ export async function GET(request: NextRequest){
             })
         }
 
+        // Find all jobs posted by this company
+        const companyJobs = await JobModel.find({ postedBy: user._id }).distinct("_id")
+
+        // Find all applications for those jobs
         const applications = await ApplicationModel.find({
-            jobId: user._id
-        }).populate("userId", "name email")
+            jobId: { $in: companyJobs }
+        }).populate("userId", "name email").populate("jobId", "title")
 
         return NextResponse.json({
             success: true,
@@ -28,7 +33,7 @@ export async function GET(request: NextRequest){
             applications
         },{
             status: 200
-            
+
         })
     } catch (error) {
         console.error("Error in fetching applications")
