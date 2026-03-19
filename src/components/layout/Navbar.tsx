@@ -30,7 +30,7 @@ export default function Navbar() {
               <Zap className="w-4 h-4 text-white" strokeWidth={2.5} />
             </div>
             <span className="text-[#2D3436] font-extrabold text-xl tracking-tight">
-              Skill<span className="text-[#B2CEC7]" style={{ WebkitTextStroke: "0.5px #2D3436" }}>Hire</span>
+              Onboard<span className="text-[#B2CEC7]" style={{ WebkitTextStroke: "0.5px #2D3436" }}>DEV</span>
             </span>
           </Link>
 

@@ -1,7 +1,7 @@
 const testimonials = [
   {
     quote:
-      "SkillHire transformed how we hire engineers. We stopped wasting time on candidates who look great on paper but can't ship — and started finding the ones who can actually do the work.",
+      "OnboardDEV transformed how we hire engineers. We stopped wasting time on candidates who look great on paper but can't ship — and started finding the ones who can actually do the work.",
     name: "Priya Sharma",
     role: "VP of Engineering",
     company: "ScaleAI Systems",
@@ -10,7 +10,7 @@ const testimonials = [
   },
   {
     quote:
-      "As a self-taught developer, my resume never did me justice. SkillHire let me show what I could actually build. I landed my first engineering role within three weeks.",
+      "As a self-taught developer, my resume never did me justice. OnboardDEV let me show what I could actually build. I landed my first engineering role within three weeks.",
     name: "Marcus Webb",
     role: "Software Engineer",
     company: "NovaDev",

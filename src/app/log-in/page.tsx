@@ -58,7 +58,7 @@ function LogInForm() {
           <Zap className="w-4 h-4 text-white" strokeWidth={2.5} />
         </div>
         <span className="text-[#2D3436] font-extrabold text-xl tracking-tight">
-          Skill<span className="text-[#B2CEC7]">Hire</span>
+          Onboard<span className="text-[#B2CEC7]">DEV</span>
         </span>
       </Link>
 
@@ -70,7 +70,7 @@ function LogInForm() {
             Welcome back
           </h1>
           <p className="text-sm text-[#2D3436]/50">
-            Sign in to continue to SkillHire
+            Sign in to continue to OnboardDEV
           </p>
         </div>
 
@@ -183,7 +183,7 @@ function LogInForm() {
       {/* Back to landing */}
       <p className="text-center text-xs text-[#2D3436]/30 mt-5">
         <Link href="/" className="hover:text-[#2D3436]/60 transition-colors underline">
-          ← Back to SkillHire
+          ← Back to OnboardDEV
         </Link>
       </p>
     </div>

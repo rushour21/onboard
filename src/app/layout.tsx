@@ -10,12 +10,12 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "SkillHire — Hire Based on Skills, Not Resumes",
+  title: "OnboardDEV — Hire Based on Skills, Not Resumes",
   description:
-    "SkillHire bridges the gap between companies and candidates through practical, project-based technical assessments. Find talent that can actually do the job.",
+    "OnboardDEV bridges the gap between companies and candidates through practical, project-based technical assessments. Find talent that can actually do the job.",
   keywords: ["hiring", "jobs", "assessments", "skills", "technical hiring"],
   openGraph: {
-    title: "SkillHire",
+    title: "OnboardDEV",
     description: "Project-based hiring for modern engineering teams.",
     type: "website",
   },

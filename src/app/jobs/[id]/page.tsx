@@ -173,7 +173,7 @@ function JobDetailContent() {
               <Zap className="w-3.5 h-3.5 text-white" strokeWidth={2.5} />
             </div>
             <span className="text-[#2D3436] font-extrabold text-base">
-              Skill<span className="text-[#B2CEC7]">Hire</span>
+              Onboard<span className="text-[#B2CEC7]">DEV</span>
             </span>
           </Link>
         </div>

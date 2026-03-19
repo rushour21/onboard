@@ -15,7 +15,7 @@ export default function Footer() {
                 <Zap className="w-4 h-4 text-[#2D3436]" strokeWidth={2.5} />
               </div>
               <span className="text-white font-extrabold text-xl tracking-tight">
-                Skill<span className="text-[#B2CEC7]">Hire</span>
+                Onboard<span className="text-[#B2CEC7]">DEV</span>
               </span>
             </Link>
             <p className="text-white/60 text-sm leading-relaxed max-w-xs">
@@ -57,7 +57,7 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <div className="mt-14 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-white/40">
-          <p>© {currentYear} SkillHire. All rights reserved.</p>
+          <p>© {currentYear} OnboardDEV. All rights reserved.</p>
           <div className="flex items-center gap-6">
             <Link href="#" className="hover:text-white/70 transition-colors">Privacy Policy</Link>
             <Link href="#" className="hover:text-white/70 transition-colors">Terms of Service</Link>

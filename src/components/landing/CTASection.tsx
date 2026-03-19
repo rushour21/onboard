@@ -52,7 +52,7 @@ export default function CTASection() {
             </h2>
 
             <p className="text-white/60 text-lg max-w-xl mx-auto mb-12 leading-relaxed">
-              Join thousands of companies and candidates already using SkillHire
+              Join thousands of companies and candidates already using OnboardDEV
               for project-based evaluation. No credit card required.
             </p>
 
@@ -61,7 +61,7 @@ export default function CTASection() {
                 href="/sign-up"
                 className="group flex items-center gap-2 bg-[#B2CEC7] text-[#2D3436] font-bold text-base px-10 py-4 rounded-2xl shadow-lg hover:bg-[#c4d8d2] hover:shadow-xl transition-all duration-200"
               >
-                Join SkillHire — It&apos;s Free
+                Join OnboardDEV — It&apos;s Free
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Link>
               <Link

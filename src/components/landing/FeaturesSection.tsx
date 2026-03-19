@@ -79,7 +79,7 @@ export default function FeaturesSection() {
         {/* Header */}
         <div className="text-center mb-18">
           <span className="inline-block text-xs font-bold uppercase tracking-widest text-[#B2CEC7] mb-3">
-            Why SkillHire
+            Why OnboardDEV
           </span>
           <h2 className="text-4xl md:text-5xl font-black text-[#2D3436] mb-5 tracking-tight">
             A smarter way to hire

@@ -56,7 +56,7 @@ export default function HeroSection() {
 
           {/* Sub-headline */}
           <p className="text-lg md:text-xl text-[#2D3436]/60 mb-12 leading-relaxed max-w-2xl mx-auto">
-            SkillHire connects engineering teams with candidates through
+            OnboardDEV connects engineering teams with candidates through
             real-world, project-based assessments — so you always know exactly
             what you&apos;re hiring.
           </p>

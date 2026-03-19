@@ -65,7 +65,7 @@ export default function SignUpPage() {
             <Zap className="w-4 h-4 text-white" strokeWidth={2.5} />
           </div>
           <span className="text-[#2D3436] font-extrabold text-xl tracking-tight">
-            Skill<span className="text-[#B2CEC7]">Hire</span>
+            Onboard<span className="text-[#B2CEC7]">DEV</span>
           </span>
         </Link>
 
@@ -77,7 +77,7 @@ export default function SignUpPage() {
               Create your account
             </h1>
             <p className="text-sm text-[#2D3436]/50">
-              Join SkillHire and get hired on your skills
+              Join OnboardDEV and get hired on your skills
             </p>
           </div>
 

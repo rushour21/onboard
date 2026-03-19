@@ -276,7 +276,7 @@ export default function CompanyDashboard() {
                 <Zap className="w-4 h-4 text-white" strokeWidth={2.5} />
               </div>
               <span className="text-[#2D3436] font-extrabold text-lg">
-                Skill<span className="text-[#B2CEC7]">Hire</span>
+                Onboard<span className="text-[#B2CEC7]">DEV</span>
               </span>
             </Link>
           </div>
@@ -301,7 +301,7 @@ export default function CompanyDashboard() {
               <Zap className="w-4 h-4 text-white" strokeWidth={2.5} />
             </div>
             <span className="text-[#2D3436] font-extrabold text-lg">
-              Skill<span className="text-[#B2CEC7]">Hire</span>
+              Onboard<span className="text-[#B2CEC7]">DEV</span>
             </span>
           </Link>
           <div className="flex items-center gap-4">
