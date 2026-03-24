@@ -64,12 +64,6 @@ export default function CTASection() {
                 Join OnboardDEV — It&apos;s Free
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Link>
-              <Link
-                href="/sign-up?role=company"
-                className="flex items-center gap-2 bg-white/10 text-white font-semibold text-base px-10 py-4 rounded-2xl border border-white/20 hover:bg-white/20 transition-all duration-200"
-              >
-                For Companies
-              </Link>
             </div>
           </div>
         </div>
